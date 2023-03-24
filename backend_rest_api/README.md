@@ -29,11 +29,11 @@ The API accepts a tabular data file and then process the file and detect tempora
 - Retrieve data file (GET `/v1/table/:file_id`)
 
 ## - User Signup (POST `/api/auth/signup`)
----
+
 Endpoint to create a user. Sends a request with a JSON payload which contains username and password. Returns a newly created user id.
 
 ### Request
----
+
 ```sh
 POST /api/auth/signup
 
@@ -41,11 +41,11 @@ $ curl 'http://localhost:5000/api/auth/signup' --header 'Content-Type: applicati
 ```
 
 #### Header
----
+
 `Content-Type`: `application/json`
 
 #### JSON Payload
----
+
 `username` *string*
 
 A unique username
@@ -55,7 +55,7 @@ A unique username
 A secure password
 
 #### Response
----
+
 ```json
 {
     "id": "641dae82faf45d9837ca11c6"
@@ -63,17 +63,17 @@ A secure password
 ```
 
 #### Returns
----
+
 `id` *string*
 
 A unique id of a user that just got created
 
 ## - User Login (POST `/api/auth/login`)
----
+
 Endpoint for user login. Sends a request with a JSON payload which contains username and password. Returns a token which you will use to access other API endpoints.
 
 ### Request
----
+
 ```sh
 POST /api/auth/login
 
@@ -81,11 +81,11 @@ $ curl 'http://localhost:5000/api/auth/login' --header 'Content-Type: applicatio
 ```
 
 #### Header
----
+
 `Content-Type`: `application/json`
 
 #### JSON Payload
----
+
 `username` *string*
 
 Username
@@ -95,7 +95,7 @@ Username
 Password associated with username
 
 #### Response
----
+
 ```json
 {
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY3OTY2NjgyNCwianRpIjoiOWRlYzJjNTAtMWI5ZS00NjY3LWE1MTQtYWEzZGFmMGY4M2FkIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjY0MWRhZTgyZmFmNDVkOTgzN2NhMTFjNiIsIm5iZiI6MTY3OTY2NjgyNCwiZXhwIjoxNjgwMjcxNjI0fQ.b_OMdjYsWd_6VJfkwZuyNuzaTnBIloBKJf11bAmRdw0"
@@ -103,17 +103,17 @@ Password associated with username
 ```
 
 #### Returns
----
+
 `token` *string*
 
 A JWT token to pass in the Authorization header to access other API endpoints.
 
 ## - Upload a tabular data file (POST `/v1/table`)
----
+
 Upload a tabular data file with a parameter `headerRow`. The API will save the file (to be processed later) and return a file ID and status. Currently it only accepts CSV files.
 
 #### Request
----
+
 ```sh
 POST /v1/table?headerRow=true
 
@@ -121,19 +121,19 @@ $ curl 'http://localhost:5000/v1/table?headerRow=true' --header 'Authorization: 
 ```
 
 #### Header
----
+
 `Authorization`: `Bearer <token>`
 
 Replace `<token>` with the token returned from `/api/auth/login`
 
 #### Parameters
----
+
 `headerRow` *boolean*
 
 Specifies if the data file has a header row or not (example values: `true` or `false`).
 
 #### Response
----
+
 ```json
 {
   "file_id": "129ca274-4545-4681-b2a1-66c1fd8c693f",
@@ -142,7 +142,7 @@ Specifies if the data file has a header row or not (example values: `true` or `f
 ```
 
 #### Returns
----
+
 `file_id` *uuid*
 
 ID of the uploaded file.
@@ -153,11 +153,11 @@ Current status of the file (example values: 'processing' or 'finished').
 
 
 ## - Retrieve data file (GET `/v1/table/:file_id`)
----
+
 Retrieve a file which has a JSON representation of its tabular data, and the column, row and character indexes for any temporals that were detected. Supply the unique identifier of the file in the URL.
 
 ### Request
----
+
 ```sh
 GET /v1/table/:file_id
 
@@ -165,17 +165,17 @@ $ curl 'http://localhost:5000/v1/table/129ca274-4545-4681-b2a1-66c1fd8c693f' --h
 ```
 
 #### Header
----
+
 `Authorization`: `Bearer <token>`
 
 Replace `<token>` with the token returned from `/api/auth/login`
 
 ### Parameters
----
+
 None
 
 ### Response
----
+
 ```json
 {
   "header": [
@@ -217,7 +217,7 @@ None
 ```
 
 ### Returns
----
+
 
 `header` *list*
 
@@ -234,7 +234,7 @@ List of `temporal` objects
 #### `Temporal` object
 
 #### Attributes
----
+
 `row` *int*
 
 Row index of the detected temporal cell
@@ -259,7 +259,7 @@ Start index of the raw text which was parsed
 
 End index of the raw text which was parsed
 
----
+
 
 # Known Issues
 
