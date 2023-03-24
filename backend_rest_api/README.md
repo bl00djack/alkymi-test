@@ -2,7 +2,12 @@
 
 # Setup
 
-For Local:
+Running with docker (recommended). Make sure to update environment variables in `.env.list`. To make testing easy, the values are already set, but it is not recommended.
+```
+$ docker-compose up -d
+```
+
+Running locally without docker:
 ```
 # Create a python 3.9 virtual environment and activate it.
 $ virtualenv -p python3.9 venv
@@ -267,5 +272,5 @@ End index of the raw text which was parsed
 
 # Some improvements
 
-- Add Docker container
 - Add unit tests
+- Show logs in docker container

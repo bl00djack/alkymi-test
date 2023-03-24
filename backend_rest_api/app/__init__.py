@@ -13,7 +13,12 @@ from app.error_handlers import setup_error_handlers
 def create_app() -> Flask:
     app = Flask(__name__)
 
-    app.config['MONGODB_SETTINGS'] = {'db': 'alkymi'}
+    app.config['MONGODB_SETTINGS'] = {
+        'db': 'alkymi',
+        'host': Config.DB.MONGO_HOST,
+        'username': Config.DB.MONGO_USER,
+        'password': Config.DB.MONGO_PASSWORD
+    }
     app.config['JWT_SECRET_KEY'] = Config.AUTH.JWT_SECRET_KEY
     app.config['PROPAGATE_EXCEPTIONS'] = True  # This flag is needed to prevent Gunicorn from overriding Flask-Restful's response messages
 
