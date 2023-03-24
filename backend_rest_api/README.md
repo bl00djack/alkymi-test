@@ -110,7 +110,7 @@ A JWT token to pass in the Authorization header to access other API endpoints.
 
 ## - Upload a tabular data file (POST `/v1/table`)
 
-Upload a tabular data file with a parameter `headerRow`. The API will save the file (to be processed later) and return a file ID and status. Currently it only accepts CSV files.
+Upload a tabular data file with a parameter `headerRow`. The API will save the file (to be processed later) and return a file ID and status. Currently the endpoint accepts csv/xls/xlsx files.
 
 #### Request
 
