@@ -265,6 +265,7 @@ End index of the raw text which was parsed
 
 - Need to properly handle failed tasks. At the moment, the workers will keep trying to process the task periodically.
 
-# To Do
+# Some improvements
 
 - Add Docker container
+- Add unit tests
