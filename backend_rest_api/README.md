@@ -263,7 +263,7 @@ End index of the raw text which was parsed
 
 # Known Issues
 
-- If the APScheduler Job fails in the middle of processing a task, the file will be in locked state forever
+- Need to properly handle failed tasks. At the moment, the workers will keep trying to process the task periodically.
 
 # To Do
 
