@@ -1,23 +1,11 @@
+"""
+Model for DataFile objects
+"""
 from uuid import uuid4
 from mongoengine.fields import UUIDField
 from mongoengine import (
     Document, EmbeddedDocument, EmbeddedDocumentField, StringField,
     BooleanField, ListField, IntField, ReferenceField)
-
-from flask_bcrypt import generate_password_hash, check_password_hash
-
-
-class User(Document):
-    meta = {"collection": "users"}
-
-    username = StringField(required=True, unique=True)
-    password = StringField(required=True, min_length=6)
-
-    def hash_password(self):
-        self.password = generate_password_hash(self.password).decode('utf8')
-
-    def check_password(self, password):
-        return check_password_hash(self.password, password)
 
 
 class Temporal(EmbeddedDocument):

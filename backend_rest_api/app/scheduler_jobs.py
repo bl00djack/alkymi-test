@@ -4,9 +4,10 @@ APScheduler jobs
 import requests
 from requests_oauthlib import OAuth2Session
 from oauthlib.oauth2 import BackendApplicationClient
+import traceback
 
 from app.config import Config
-from app.models import DataFile, Temporal
+from app.models.data_files import DataFile, Temporal
 from app.serializers import TemporalSerializer
 
 
@@ -70,7 +71,7 @@ def process_data_file():
         data_file.lock = False
         data_file.save()
         print(f"Got interrupted while processing file_id: {data_file._id}")
-        print(exc)
+        print(traceback.format_exc())
         return
 
     data_file.temporals = temporals

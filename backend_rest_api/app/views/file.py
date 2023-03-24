@@ -10,7 +10,8 @@ from flask import request
 from flask_restful import Resource
 from flask_jwt_extended import jwt_required, get_jwt_identity
 
-from app.models import DataFile, User
+from app.models.data_files import DataFile
+from app.models.users import User
 from app.serializers import DataFileSerializer
 from app.error_handlers import ContentNotFound
 from app.views.file_helper import FileHelperFactory
